@@ -41,4 +41,4 @@ stages:
                 resourceGroupName: ${{ parameters.resourceGroupName }}
                 location: ${{ parameters.region }}
                 csmFile: '$(Pipeline.Workspace)/build/Infrastructure/api-management-core.bicep'
-                overrideParameters: '-serviceName ${{ parameters.serviceName }}  -publisherEmail ${{ parameters.publisherEmail }} -publisherName ${{ parameters.publisherName }}'
+                overrideParameters: '-apiManagementServiceName ${{ parameters.serviceName }}  -publisherEmail ${{ parameters.publisherEmail }} -publisherName ${{ parameters.publisherName }}'
