@@ -3,7 +3,7 @@ trigger: none
 resources:
   pipelines:
   - pipeline: build
-    source: 'demo-az-apim - demo api - BUILD'
+    source: 'demo-apim-ops - DemoAPI - BUILD'
   
 variables:
   vmImageName: 'ubuntu-latest'
@@ -17,6 +17,5 @@ stages:
     environment: 'APIM-CI'
     azureSubscription: ${{ variables.azureSubscription }}
     region: ${{ variables.region }}
-    resourceGroupName: 'rutzsco-demo-api-management-ci' 
-    serviceName: 'rutzsco-demo-api-management-ci-01'
-    AADRegistrationName: aad-msft
+    resourceGroupName: 'rutzsco-apim-ops-ci' 
+    serviceName: 'rutzsco-apim-ops-ci'
