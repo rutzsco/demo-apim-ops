@@ -32,11 +32,13 @@ stages:
           deploy:
   
             steps:
-            - task: AzureResourceGroupDeployment@2
+            - task: AzureResourceManagerTemplateDeployment@3
               displayName: '1. API Management Core - Deploy'
               inputs:
-                azureSubscription: ${{ parameters.azureSubscription }}
+                deploymentScope: 'Resource Group'
+                azureResourceManagerConnection: ${{ parameters.azureSubscription }}
+                action: 'Create Or Update Resource Group'
                 resourceGroupName: ${{ parameters.resourceGroupName }}
                 location: ${{ parameters.region }}
-                csmFile: '$(Pipeline.Workspace)/build/Infrastructure/api-management-core.json'
+                csmFile: '$(Pipeline.Workspace)/build/Infrastructure/api-management-core.bicep'
                 overrideParameters: '-serviceName ${{ parameters.serviceName }}  -publisherEmail ${{ parameters.publisherEmail }} -publisherName ${{ parameters.publisherName }}'
