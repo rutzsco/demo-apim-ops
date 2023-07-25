@@ -16,7 +16,6 @@ parameters:
 - name: publisherName
   default: ''  
 
-
 stages:
   - stage: ${{ parameters.stageName }}
     displayName: ${{ parameters.stageName }}
@@ -40,4 +39,4 @@ stages:
                 resourceGroupName: ${{ parameters.resourceGroupName }}
                 location: ${{ parameters.region }}
                 csmFile: '$(Pipeline.Workspace)/build/Infrastructure/api-management-core.json'
-                overrideParameters: '-serviceName ${{ parameters.serviceName }}  -publisherEmail ${{ parameters.publisherEmail }} -publisherName ${{ parameters.publisherName }} -AADRegistrationName ${{ parameters.AADRegistrationName }} -AADClientId ${{ parameters.AADClientId }} -AADClientSecret ${{ parameters.AADClientSecret }} -AADAuthorizationEndpoint ${{ parameters.AADAuthorizationEndpoint }} -AADTokenEndpoint ${{ parameters.AADTokenEndpoint }}'
+                overrideParameters: '-serviceName ${{ parameters.serviceName }}  -publisherEmail ${{ parameters.publisherEmail }} -publisherName ${{ parameters.publisherName }}'
