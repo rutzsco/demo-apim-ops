@@ -1,0 +1,34 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: 'demo-apim-ops - Core - BUILD'
+  
+variables:
+  vmImageName: 'ubuntu-latest'
+  azureSubscription: 'Demo Account'
+  region: 'East US'
+
+stages:
+- template: azure-release-pipelines-stage-template.yml
+  parameters:
+    stageName: 'CI'
+    environment: 'APIM-OPS-CI'
+    azureSubscription: ${{ variables.azureSubscription }}
+    region: ${{ variables.region }}
+    resourceGroupName: 'rutzsco-apim-ops-ci' 
+    serviceName: 'rutzsco-apim-ops-ci'
+    publisherName: 'rutzsco'
+    publisherEmail: 'scrutz@microsoft.com'
+- template: azure-release-pipelines-stage-template.yml
+  parameters:
+    stageName: 'QA'
+    environment: 'APIM-OPS-QA'
+    azureSubscription: ${{ variables.azureSubscription }}
+    region: ${{ variables.region }}
+    resourceGroupName: 'rutzsco-apim-ops-qa' 
+    serviceName: 'rutzsco-apim-ops-qa'
+    publisherName: 'rutzsco'
+    publisherEmail: 'scrutz@microsoft.com'
+     
